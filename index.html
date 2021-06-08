@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <title>Basic calculator</title>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="display">
+        <span id="previousValue"></span>
+        <span id="currentValue">0</span>
+      </div>
+      <div class="keyboard">
+        <div class="row">
+          <button class="span-2" onclick="clearData()">C</button>
+          <button onclick="deleteKey()">⌫</button>
+          <button onclick="newOperation(this.innerText)">+</button>
+        </div>
+        <div class="row">
+          <button onclick="numberKey(this.innerText)">7</button>
+          <button onclick="numberKey(this.innerText)">8</button>
+          <button onclick="numberKey(this.innerText)">9</button>
+          <button onclick="newOperation(this.innerText)">-</button>
+        </div>
+        <div class="row">
+          <button onclick="numberKey(this.innerText)">4</button>
+          <button onclick="numberKey(this.innerText)">5</button>
+          <button onclick="numberKey(this.innerText)">6</button>
+          <button onclick="newOperation(this.innerText)">*</button>
+        </div>
+        <div class="row">
+          <button onclick="numberKey(this.innerText)">1</button>
+          <button onclick="numberKey(this.innerText)">2</button>
+          <button onclick="numberKey(this.innerText)">3</button>
+          <button onclick="newOperation(this.innerText)">÷</button>
+        </div>
+        <div class="row">
+          <button onclick="numberKey(this.innerText)">.</button>
+          <button onclick="numberKey(this.innerText)">0</button>
+          <button class="span-2" onclick="subtotal()">=</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
