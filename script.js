@@ -1,11 +1,44 @@
+//calculator display rows
 const previousValueElement = document.querySelector("#previousValue")
 const currentValueElement = document.querySelector("#currentValue")
+
 let operation
 
+//numpad keyboard
+document.addEventListener("keyup", (e) => {
+  switch (e.key) {
+    case "+":
+      newOperation(e.key)
+      break
+    case "-":
+      newOperation(e.key)
+      break
+    case "*":
+      newOperation(e.key)
+      break
+    case "/":
+      newOperation(e.key)
+      break
+    case "Enter":
+      subtotal()
+      break
+    case "Escape":
+      clearData()
+      break
+    case "Backspace":
+      deleteKey()
+      break
+    default:
+      if (e.code.includes("Numpad")) numberKey(e.key)
+  }
+})
+
 function numberKey(key) {
+  flashButton(key)
   if (currentValueElement.innerText === "0") currentValueElement.innerText = key
   else currentValueElement.innerText += key
 }
+
 function deleteKey() {
   if (currentValueElement.innerText.length > 1)
     currentValueElement.innerText = currentValueElement.innerText.slice(0, -1)
@@ -47,6 +80,9 @@ function calculate() {
     case "÷":
       previousValueElement.innerText = num1 / num2
       break
+    case "/":
+      previousValueElement.innerText = num1 / num2
+      break
   }
 }
 
@@ -63,4 +99,14 @@ function clearData() {
   operation = undefined
   previousValueElement.innerText = ""
   currentValueElement.innerText = "0"
+}
+
+function flashButton(keyValue) {
+  const keyboard = document.querySelectorAll("button")
+  keyboard.forEach((key) => {
+    if (key.innerText === keyValue) {
+      key.style.backgroundColor = "rgba(255, 255, 255, 0.9)"
+      setTimeout(() => (key.style.backgroundColor = "rgba(255, 255, 255, 0.75)"), 100)
+    }
+  })
 }
